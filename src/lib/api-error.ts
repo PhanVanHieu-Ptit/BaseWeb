@@ -1,5 +1,7 @@
-import type { AxiosError } from 'axios'
+import { isAxiosError, type AxiosError } from 'axios'
 import { z } from 'zod'
+
+import { i18n } from '@/lib/i18n'
 
 /** Error payload we expect from the backend. Every field is optional on purpose. */
 const errorBodySchema = z.object({
@@ -43,11 +45,11 @@ export function toApiError(error: AxiosError): ApiError {
   if (body.success && body.data.message) {
     message = body.data.message
   } else if (error.code === 'ECONNABORTED' || error.code === 'ETIMEDOUT') {
-    message = 'The request timed out. Please try again.'
+    message = i18n.t('errors.timeout')
   } else if (!error.response) {
-    message = 'Unable to reach the server. Check your connection and try again.'
+    message = i18n.t('errors.network')
   } else {
-    message = `Request failed with status ${String(status)}.`
+    message = i18n.t('errors.status', { status: String(status) })
   }
 
   return new ApiError(message, {
@@ -58,10 +60,9 @@ export function toApiError(error: AxiosError): ApiError {
   })
 }
 
-export function getErrorMessage(
-  error: unknown,
-  fallback = 'Something went wrong. Please try again.',
-): string {
+/** Best human-readable message for any thrown value; raw `AxiosError`s are normalised first. */
+export function getErrorMessage(error: unknown, fallback?: string): string {
+  if (isAxiosError(error)) return toApiError(error).message
   if (error instanceof Error && error.message) return error.message
-  return fallback
+  return fallback ?? i18n.t('errors.generic')
 }

@@ -1,0 +1,59 @@
+{
+  "title": "Users",
+  "description": "Manage user accounts.",
+  "add": "Add user",
+  "searchPlaceholder": "Search by name or email…",
+  "searchLabel": "Search users",
+  "filter": {
+    "label": "Filter by status",
+    "all": "All statuses"
+  },
+  "status": {
+    "active": "Active",
+    "inactive": "Inactive",
+    "pending": "Pending"
+  },
+  "role": {
+    "admin": "Admin",
+    "editor": "Editor",
+    "viewer": "Viewer"
+  },
+  "columns": {
+    "name": "Name",
+    "email": "Email",
+    "role": "Role",
+    "status": "Status",
+    "createdAt": "Created",
+    "actions": "Actions"
+  },
+  "rowActions": "Actions for {{name}}",
+  "empty": "No users match your filters.",
+  "total": "{{count}} users",
+  "form": {
+    "createTitle": "Add user",
+    "createDescription": "Create a new user account.",
+    "editTitle": "Edit user",
+    "editDescription": "Update the details of this user.",
+    "name": "Full name",
+    "email": "Email",
+    "role": "Role",
+    "status": "Status",
+    "submitCreate": "Create user",
+    "submitEdit": "Save changes"
+  },
+  "delete": {
+    "title": "Delete user?",
+    "description": "This will permanently delete {{name}}. This action cannot be undone.",
+    "confirm": "Delete"
+  },
+  "toast": {
+    "created": "User created.",
+    "updated": "User updated.",
+    "deleted": "User deleted."
+  },
+  "validation": {
+    "nameRequired": "Name is required",
+    "nameMax": "Name must be at most 60 characters",
+    "email": "Enter a valid email address"
+  }
+}

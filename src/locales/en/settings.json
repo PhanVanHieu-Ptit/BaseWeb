@@ -1,0 +1,33 @@
+{
+  "title": "Settings",
+  "description": "Manage your profile and application preferences.",
+  "tabs": {
+    "profile": "Profile",
+    "preferences": "Preferences"
+  },
+  "profile": {
+    "title": "Personal information",
+    "description": "Update your name and email address.",
+    "avatar": "Avatar",
+    "changeAvatar": "Change avatar",
+    "avatarHint": "Avatar upload is not available in this demo.",
+    "name": "Full name",
+    "email": "Email",
+    "save": "Save changes",
+    "saving": "Saving…",
+    "saved": "Your changes have been saved."
+  },
+  "preferences": {
+    "title": "System preferences",
+    "description": "Customize language and appearance. Changes apply instantly.",
+    "language": "Language",
+    "languageHint": "Choose the language used across the application.",
+    "theme": "Theme",
+    "themeHint": "Switch between light, dark, or follow your system."
+  },
+  "validation": {
+    "nameRequired": "Name is required",
+    "nameMax": "Name must be at most 60 characters",
+    "email": "Enter a valid email address"
+  }
+}

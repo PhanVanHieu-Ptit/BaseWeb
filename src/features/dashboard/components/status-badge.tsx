@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next'
+
 import { cn } from '@/lib/utils'
 
 import type { ActivityStatus } from '../types'
@@ -15,6 +17,8 @@ interface StatusBadgeProps {
 
 /** Sample of `cn()`: base classes + a variant + a caller override, merged without conflicts. */
 export function StatusBadge({ status, className }: StatusBadgeProps) {
+  const { t } = useTranslation('dashboard')
+
   return (
     <span
       className={cn(
@@ -23,7 +27,7 @@ export function StatusBadge({ status, className }: StatusBadgeProps) {
         className,
       )}
     >
-      {status}
+      {t(`status.${status}`)}
     </span>
   )
 }

@@ -4,6 +4,7 @@ import { createRoot } from 'react-dom/client'
 import { App } from '@/app/app'
 import { env } from '@/config/env'
 import { setupAuth } from '@/features/auth'
+import '@/lib/i18n'
 
 import './index.css'
 

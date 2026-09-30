@@ -35,6 +35,8 @@ export const router = createBrowserRouter([
             children: [
               { index: true, element: <Navigate to={paths.dashboard} replace /> },
               { path: paths.dashboard, lazy: () => import('./routes/dashboard') },
+              { path: paths.users, lazy: () => import('./routes/users') },
+              { path: paths.settings, lazy: () => import('./routes/settings') },
             ],
           },
         ],

@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next'
+
 import { Button } from '@/components/ui/button'
 import { Skeleton } from '@/components/ui/skeleton'
 import { getErrorMessage } from '@/lib/api-error'
@@ -8,6 +10,7 @@ import { useDashboardStats } from '../api/get-stats'
 import { StatCard } from './stat-card'
 
 export function StatsGrid() {
+  const { t } = useTranslation(['dashboard', 'common'])
   const { data, isPending, isError, error, refetch } = useDashboardStats()
 
   if (isPending) {
@@ -31,7 +34,7 @@ export function StatsGrid() {
             void refetch()
           }}
         >
-          Try again
+          {t('common:actions.tryAgain')}
         </Button>
       </div>
     )
@@ -39,17 +42,25 @@ export function StatsGrid() {
 
   return (
     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-      <StatCard label="Total users" value={formatNumber(data.totalUsers)} description="All time" />
       <StatCard
-        label="Active sessions"
-        value={formatNumber(data.activeSessions)}
-        description="Right now"
+        label={t('stats.totalUsers')}
+        value={formatNumber(data.totalUsers)}
+        description={t('stats.totalUsersHint')}
       />
-      <StatCard label="Revenue" value={formatCurrency(data.revenue)} description="This month" />
       <StatCard
-        label="Conversion rate"
+        label={t('stats.activeSessions')}
+        value={formatNumber(data.activeSessions)}
+        description={t('stats.activeSessionsHint')}
+      />
+      <StatCard
+        label={t('stats.revenue')}
+        value={formatCurrency(data.revenue)}
+        description={t('stats.revenueHint')}
+      />
+      <StatCard
+        label={t('stats.conversionRate')}
         value={formatPercent(data.conversionRate)}
-        description="Visitors who signed up"
+        description={t('stats.conversionRateHint')}
       />
     </div>
   )
