@@ -1,0 +1,27 @@
+{
+  "title": "Bảng điều khiển",
+  "welcome": "Chào mừng trở lại.",
+  "welcomeUser": "Chào mừng trở lại, {{name}}.",
+  "stats": {
+    "totalUsers": "Tổng người dùng",
+    "totalUsersHint": "Từ trước đến nay",
+    "activeSessions": "Phiên đang hoạt động",
+    "activeSessionsHint": "Ngay lúc này",
+    "revenue": "Doanh thu",
+    "revenueHint": "Tháng này",
+    "conversionRate": "Tỷ lệ chuyển đổi",
+    "conversionRateHint": "Khách truy cập đã đăng ký"
+  },
+  "activity": {
+    "title": "Hoạt động gần đây",
+    "description": "Tìm theo người dùng hoặc hành động.",
+    "searchPlaceholder": "Tìm hoạt động…",
+    "searchLabel": "Tìm hoạt động",
+    "empty": "Không có hoạt động nào khớp với tìm kiếm."
+  },
+  "status": {
+    "success": "thành công",
+    "pending": "đang chờ",
+    "failed": "thất bại"
+  }
+}

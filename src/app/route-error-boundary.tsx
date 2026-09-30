@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import { isRouteErrorResponse, Link, useRouteError } from 'react-router'
 
 import { Button } from '@/components/ui/button'
@@ -5,14 +6,13 @@ import { paths } from '@/config/paths'
 import { getErrorMessage } from '@/lib/api-error'
 
 export function RouteErrorBoundary() {
+  const { t } = useTranslation('errors')
   const error = useRouteError()
 
   const title = isRouteErrorResponse(error)
     ? `${String(error.status)} ${error.statusText}`
-    : 'Something went wrong'
-  const detail = isRouteErrorResponse(error)
-    ? 'The page could not be loaded.'
-    : getErrorMessage(error)
+    : t('route.title')
+  const detail = isRouteErrorResponse(error) ? t('route.loadFailed') : getErrorMessage(error)
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center gap-4 px-4 text-center">
@@ -25,10 +25,10 @@ export function RouteErrorBoundary() {
             window.location.reload()
           }}
         >
-          Reload
+          {t('global.reload')}
         </Button>
         <Button asChild>
-          <Link to={paths.root}>Go home</Link>
+          <Link to={paths.root}>{t('route.goHome')}</Link>
         </Button>
       </div>
     </div>

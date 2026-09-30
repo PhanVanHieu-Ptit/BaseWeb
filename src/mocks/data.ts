@@ -1,4 +1,5 @@
 import type { Activity, ActivityStatus, DashboardStats } from '@/features/dashboard'
+import type { User, UserRole, UserStatus } from '@/features/users'
 
 const USERS = [
   'Alice Nguyen',
@@ -40,3 +41,35 @@ export const stats: DashboardStats = {
   revenue: 48_250.5,
   conversionRate: 0.0342,
 }
+
+const USER_NAMES = [
+  'Alice Nguyen',
+  'Bao Tran',
+  'Chi Le',
+  'Dung Pham',
+  'Emma Wilson',
+  'Farid Khan',
+  'Giang Vo',
+  'Hana Sato',
+  'Ivan Petrov',
+  'Julia Costa',
+] as const
+const USER_ROLES: readonly UserRole[] = ['viewer', 'editor', 'viewer', 'admin', 'viewer']
+const USER_STATUSES: readonly UserStatus[] = ['active', 'active', 'pending', 'active', 'inactive']
+
+function toEmail(name: string, index: number): string {
+  return `${name.toLowerCase().replace(/\s+/g, '.')}.${String(index + 1)}@example.com`
+}
+
+/** Mutable on purpose: the users handlers create, edit and delete entries in memory. */
+export const users: User[] = Array.from({ length: 27 }, (_, index) => {
+  const name = pick(USER_NAMES, index)
+  return {
+    id: `user-${String(index + 1)}`,
+    name,
+    email: toEmail(name, index),
+    role: USER_ROLES[index % USER_ROLES.length] ?? 'viewer',
+    status: USER_STATUSES[index % USER_STATUSES.length] ?? 'active',
+    createdAt: new Date(START - index * 24 * 60 * 60 * 1000).toISOString(),
+  }
+})

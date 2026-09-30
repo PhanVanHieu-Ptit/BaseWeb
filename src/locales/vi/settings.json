@@ -1,0 +1,33 @@
+{
+  "title": "Cài đặt",
+  "description": "Quản lý hồ sơ và tuỳ chọn ứng dụng của bạn.",
+  "tabs": {
+    "profile": "Hồ sơ",
+    "preferences": "Tuỳ chọn"
+  },
+  "profile": {
+    "title": "Thông tin cá nhân",
+    "description": "Cập nhật tên và địa chỉ email của bạn.",
+    "avatar": "Ảnh đại diện",
+    "changeAvatar": "Đổi ảnh đại diện",
+    "avatarHint": "Chức năng tải ảnh đại diện chưa khả dụng trong bản demo.",
+    "name": "Họ và tên",
+    "email": "Email",
+    "save": "Lưu thay đổi",
+    "saving": "Đang lưu…",
+    "saved": "Đã lưu thay đổi của bạn."
+  },
+  "preferences": {
+    "title": "Tuỳ chỉnh hệ thống",
+    "description": "Tuỳ biến ngôn ngữ và giao diện. Thay đổi có hiệu lực ngay lập tức.",
+    "language": "Ngôn ngữ",
+    "languageHint": "Chọn ngôn ngữ hiển thị trong toàn bộ ứng dụng.",
+    "theme": "Giao diện",
+    "themeHint": "Chuyển giữa sáng, tối hoặc theo hệ thống."
+  },
+  "validation": {
+    "nameRequired": "Vui lòng nhập tên",
+    "nameMax": "Tên tối đa 60 ký tự",
+    "email": "Nhập địa chỉ email hợp lệ"
+  }
+}

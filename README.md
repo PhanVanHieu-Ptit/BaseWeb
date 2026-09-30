@@ -119,7 +119,7 @@ Bật bằng `VITE_ENABLE_MOCKS=true` (chỉ ở `pnpm dev`). Plugin `msw/vite` 
 pnpm dlx shadcn@latest add dialog
 ```
 
-Tailwind v4 cấu hình theo kiểu CSS-first nên **không có `tailwind.config.js`**: theme nằm ở [`src/index.css`](src/index.css) (`:root`, `.dark`, `@theme inline`). Dark mode dùng class `.dark` trên thẻ cha; dự án chưa có nút chuyển.
+Tailwind v4 cấu hình theo kiểu CSS-first nên **không có `tailwind.config.js`**: theme nằm ở [`src/index.css`](src/index.css) (`:root`, `.dark`, `@theme inline`). Dark mode dùng class `.dark` trên `<html>`, do `ThemeProvider` quản lý (light / dark / system, lưu ở localStorage, script inline trong `index.html` chống nháy trắng). Đổi theme bằng `useTheme()` hoặc `<ThemeToggle />`. Đa ngôn ngữ (vi/en) dùng i18next: file dịch ở `src/locales/{vi,en}/*.json`, key có autocomplete; thông báo dùng `notify` ở `src/lib/notify.ts`.
 
 ## Ghi chú phiên bản
 

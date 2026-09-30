@@ -1,0 +1,59 @@
+{
+  "title": "Người dùng",
+  "description": "Quản lý tài khoản người dùng.",
+  "add": "Thêm người dùng",
+  "searchPlaceholder": "Tìm theo tên hoặc email…",
+  "searchLabel": "Tìm người dùng",
+  "filter": {
+    "label": "Lọc theo trạng thái",
+    "all": "Tất cả trạng thái"
+  },
+  "status": {
+    "active": "Hoạt động",
+    "inactive": "Ngừng hoạt động",
+    "pending": "Chờ duyệt"
+  },
+  "role": {
+    "admin": "Quản trị viên",
+    "editor": "Biên tập viên",
+    "viewer": "Người xem"
+  },
+  "columns": {
+    "name": "Tên",
+    "email": "Email",
+    "role": "Vai trò",
+    "status": "Trạng thái",
+    "createdAt": "Ngày tạo",
+    "actions": "Thao tác"
+  },
+  "rowActions": "Thao tác cho {{name}}",
+  "empty": "Không có người dùng nào khớp với bộ lọc.",
+  "total": "{{count}} người dùng",
+  "form": {
+    "createTitle": "Thêm người dùng",
+    "createDescription": "Tạo tài khoản người dùng mới.",
+    "editTitle": "Sửa người dùng",
+    "editDescription": "Cập nhật thông tin của người dùng này.",
+    "name": "Họ và tên",
+    "email": "Email",
+    "role": "Vai trò",
+    "status": "Trạng thái",
+    "submitCreate": "Tạo người dùng",
+    "submitEdit": "Lưu thay đổi"
+  },
+  "delete": {
+    "title": "Xoá người dùng?",
+    "description": "Thao tác này sẽ xoá vĩnh viễn {{name}} và không thể hoàn tác.",
+    "confirm": "Xoá"
+  },
+  "toast": {
+    "created": "Đã tạo người dùng.",
+    "updated": "Đã cập nhật người dùng.",
+    "deleted": "Đã xoá người dùng."
+  },
+  "validation": {
+    "nameRequired": "Vui lòng nhập tên",
+    "nameMax": "Tên tối đa 60 ký tự",
+    "email": "Nhập địa chỉ email hợp lệ"
+  }
+}

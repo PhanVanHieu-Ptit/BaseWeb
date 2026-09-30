@@ -1,0 +1,44 @@
+{
+  "appName": "BaseWeb",
+  "nav": {
+    "main": "Main",
+    "dashboard": "Dashboard",
+    "users": "Users",
+    "settings": "Settings"
+  },
+  "actions": {
+    "signOut": "Sign out",
+    "tryAgain": "Try again",
+    "previous": "Previous",
+    "next": "Next",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "close": "Close",
+    "reload": "Reload",
+    "backToHome": "Back to home"
+  },
+  "pagination": {
+    "pageOf": "Page {{page}} of {{total}}"
+  },
+  "language": {
+    "label": "Language",
+    "switch": "Change language",
+    "vi": "Tiếng Việt",
+    "en": "English"
+  },
+  "theme": {
+    "label": "Theme",
+    "toggle": "Toggle theme",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  },
+  "errors": {
+    "timeout": "The request timed out. Please try again.",
+    "network": "Unable to reach the server. Check your connection and try again.",
+    "status": "Request failed with status {{status}}.",
+    "generic": "Something went wrong. Please try again."
+  }
+}

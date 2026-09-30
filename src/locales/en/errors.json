@@ -1,0 +1,17 @@
+{
+  "notFound": {
+    "code": "404",
+    "title": "Page not found",
+    "description": "The page you are looking for does not exist or has been moved."
+  },
+  "route": {
+    "title": "Something went wrong",
+    "loadFailed": "The page could not be loaded.",
+    "goHome": "Go home"
+  },
+  "global": {
+    "title": "Something went wrong",
+    "description": "An unexpected error occurred. Reload the page to continue.",
+    "reload": "Reload"
+  }
+}

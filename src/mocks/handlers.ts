@@ -3,7 +3,9 @@ import { z } from 'zod'
 
 import { env } from '@/config/env'
 
-import { activities, stats } from './data'
+import { userFormSchema, userStatusSchema, type User } from '@/features/users'
+
+import { activities, stats, users } from './data'
 import { DEMO_ACCOUNT } from './demo-account'
 
 // The access token is short-lived on purpose: keep the dashboard open for a while and the next
@@ -42,6 +44,30 @@ function unauthorized() {
   return HttpResponse.json(
     { message: 'Your session has expired.', code: 'UNAUTHORIZED' },
     { status: 401 },
+  )
+}
+
+function badRequest() {
+  return HttpResponse.json(
+    { message: 'Invalid request body.', code: 'BAD_REQUEST' },
+    { status: 400 },
+  )
+}
+
+function notFound() {
+  return HttpResponse.json({ message: 'User not found.', code: 'NOT_FOUND' }, { status: 404 })
+}
+
+function isEmailTaken(email: string, exceptId?: string): boolean {
+  return users.some(
+    (user) => user.id !== exceptId && user.email.toLowerCase() === email.toLowerCase(),
+  )
+}
+
+function emailConflict() {
+  return HttpResponse.json(
+    { message: 'A user with this email already exists.', code: 'EMAIL_TAKEN' },
+    { status: 409 },
   )
 }
 
@@ -110,5 +136,72 @@ export const handlers = [
       page,
       pageSize,
     })
+  }),
+
+  http.get(url('/users'), async ({ request }) => {
+    await delay(300)
+    if (!isAuthorized(request)) return unauthorized()
+
+    const params = new URL(request.url).searchParams
+    const search = (params.get('search') ?? '').trim().toLowerCase()
+    const status = userStatusSchema.safeParse(params.get('status'))
+    const page = Math.max(1, Number(params.get('page')) || 1)
+    const pageSize = Math.min(50, Math.max(1, Number(params.get('pageSize')) || 8))
+
+    const matches = users.filter(
+      (user) =>
+        (!status.success || user.status === status.data) &&
+        (user.name.toLowerCase().includes(search) || user.email.toLowerCase().includes(search)),
+    )
+
+    return HttpResponse.json({
+      items: matches.slice((page - 1) * pageSize, page * pageSize),
+      total: matches.length,
+      page,
+      pageSize,
+    })
+  }),
+
+  http.post(url('/users'), async ({ request }) => {
+    await delay(400)
+    if (!isAuthorized(request)) return unauthorized()
+
+    const body = userFormSchema.safeParse(await request.json())
+    if (!body.success) return badRequest()
+    if (isEmailTaken(body.data.email)) return emailConflict()
+
+    const user: User = {
+      ...body.data,
+      id: `user-${Math.random().toString(36).slice(2, 10)}`,
+      createdAt: new Date().toISOString(),
+    }
+    users.unshift(user)
+    return HttpResponse.json(user, { status: 201 })
+  }),
+
+  http.patch(url('/users/:id'), async ({ request, params }) => {
+    await delay(400)
+    if (!isAuthorized(request)) return unauthorized()
+
+    const user = users.find((candidate) => candidate.id === params['id'])
+    if (!user) return notFound()
+
+    const body = userFormSchema.safeParse(await request.json())
+    if (!body.success) return badRequest()
+    if (isEmailTaken(body.data.email, user.id)) return emailConflict()
+
+    Object.assign(user, body.data)
+    return HttpResponse.json(user)
+  }),
+
+  http.delete(url('/users/:id'), async ({ request, params }) => {
+    await delay(400)
+    if (!isAuthorized(request)) return unauthorized()
+
+    const index = users.findIndex((candidate) => candidate.id === params['id'])
+    if (index === -1) return notFound()
+
+    users.splice(index, 1)
+    return new HttpResponse(null, { status: 204 })
   }),
 ]

@@ -1,5 +1,6 @@
 import { SearchIcon } from 'lucide-react'
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
@@ -17,6 +18,7 @@ import { StatusBadge } from './status-badge'
 const PAGE_SIZE = 5
 
 export function ActivityFeed() {
+  const { t } = useTranslation(['dashboard', 'common'])
   const [search, setSearch] = useState('')
   const [page, setPage] = useState(1)
   // The request only fires once the user pauses typing.
@@ -31,14 +33,14 @@ export function ActivityFeed() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Recent activity</CardTitle>
-        <CardDescription>Search by user or action.</CardDescription>
+        <CardTitle>{t('activity.title')}</CardTitle>
+        <CardDescription>{t('activity.description')}</CardDescription>
         <div className="relative pt-2">
           <SearchIcon className="pointer-events-none absolute top-1/2 left-3 mt-1 size-4 -translate-y-1/2 text-muted-foreground" />
           <Input
             type="search"
-            placeholder="Search activity…"
-            aria-label="Search activity"
+            placeholder={t('activity.searchPlaceholder')}
+            aria-label={t('activity.searchLabel')}
             className="pl-9"
             value={search}
             onChange={(event) => {
@@ -68,16 +70,14 @@ export function ActivityFeed() {
                 void refetch()
               }}
             >
-              Try again
+              {t('common:actions.tryAgain')}
             </Button>
           </div>
         )}
 
         {data &&
           (data.items.length === 0 ? (
-            <p className="py-6 text-center text-sm text-muted-foreground">
-              No activity matches your search.
-            </p>
+            <p className="py-6 text-center text-sm text-muted-foreground">{t('activity.empty')}</p>
           ) : (
             <ul
               className={cn('divide-y transition-opacity', isPlaceholderData && 'opacity-60')}
@@ -106,7 +106,7 @@ export function ActivityFeed() {
         {data && data.total > 0 && (
           <div className="flex items-center justify-between text-sm">
             <span className="text-muted-foreground">
-              Page {page} of {totalPages}
+              {t('common:pagination.pageOf', { page, total: totalPages })}
             </span>
             <div className="flex gap-2">
               <Button
@@ -117,7 +117,7 @@ export function ActivityFeed() {
                   setPage((current) => current - 1)
                 }}
               >
-                Previous
+                {t('common:actions.previous')}
               </Button>
               <Button
                 variant="outline"
@@ -127,7 +127,7 @@ export function ActivityFeed() {
                   setPage((current) => current + 1)
                 }}
               >
-                Next
+                {t('common:actions.next')}
               </Button>
             </div>
           </div>

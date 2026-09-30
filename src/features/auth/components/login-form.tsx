@@ -1,4 +1,5 @@
 import { useState, type SubmitEvent } from 'react'
+import { useTranslation } from 'react-i18next'
 import { z } from 'zod'
 
 import { Button } from '@/components/ui/button'
@@ -13,6 +14,7 @@ import { loginSchema, type LoginInput } from '../types'
 type FieldErrors = Partial<Record<keyof LoginInput, string>>
 
 export function LoginForm() {
+  const { t } = useTranslation('auth')
   const [values, setValues] = useState<LoginInput>({ email: '', password: '' })
   const [fieldErrors, setFieldErrors] = useState<FieldErrors>({})
   const login = useLogin()
@@ -38,7 +40,7 @@ export function LoginForm() {
   return (
     <form onSubmit={handleSubmit} noValidate className="space-y-4">
       <div className="space-y-2">
-        <Label htmlFor="email">Email</Label>
+        <Label htmlFor="email">{t('login.email')}</Label>
         <Input
           id="email"
           name="email"
@@ -59,7 +61,7 @@ export function LoginForm() {
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="password">Password</Label>
+        <Label htmlFor="password">{t('login.password')}</Label>
         <Input
           id="password"
           name="password"
@@ -87,7 +89,7 @@ export function LoginForm() {
 
       <Button type="submit" className="w-full" disabled={login.isPending}>
         {login.isPending && <Spinner />}
-        Sign in
+        {t('login.submit')}
       </Button>
     </form>
   )

@@ -1,0 +1,27 @@
+{
+  "title": "Dashboard",
+  "welcome": "Welcome back.",
+  "welcomeUser": "Welcome back, {{name}}.",
+  "stats": {
+    "totalUsers": "Total users",
+    "totalUsersHint": "All time",
+    "activeSessions": "Active sessions",
+    "activeSessionsHint": "Right now",
+    "revenue": "Revenue",
+    "revenueHint": "This month",
+    "conversionRate": "Conversion rate",
+    "conversionRateHint": "Visitors who signed up"
+  },
+  "activity": {
+    "title": "Recent activity",
+    "description": "Search by user or action.",
+    "searchPlaceholder": "Search activity…",
+    "searchLabel": "Search activity",
+    "empty": "No activity matches your search."
+  },
+  "status": {
+    "success": "success",
+    "pending": "pending",
+    "failed": "failed"
+  }
+}

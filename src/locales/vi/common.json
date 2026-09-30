@@ -1,0 +1,44 @@
+{
+  "appName": "BaseWeb",
+  "nav": {
+    "main": "Chính",
+    "dashboard": "Bảng điều khiển",
+    "users": "Người dùng",
+    "settings": "Cài đặt"
+  },
+  "actions": {
+    "signOut": "Đăng xuất",
+    "tryAgain": "Thử lại",
+    "previous": "Trước",
+    "next": "Sau",
+    "cancel": "Huỷ",
+    "save": "Lưu",
+    "delete": "Xoá",
+    "edit": "Sửa",
+    "close": "Đóng",
+    "reload": "Tải lại",
+    "backToHome": "Về trang chủ"
+  },
+  "pagination": {
+    "pageOf": "Trang {{page}} / {{total}}"
+  },
+  "language": {
+    "label": "Ngôn ngữ",
+    "switch": "Đổi ngôn ngữ",
+    "vi": "Tiếng Việt",
+    "en": "English"
+  },
+  "theme": {
+    "label": "Giao diện",
+    "toggle": "Đổi giao diện",
+    "light": "Sáng",
+    "dark": "Tối",
+    "system": "Theo hệ thống"
+  },
+  "errors": {
+    "timeout": "Yêu cầu đã hết thời gian chờ. Vui lòng thử lại.",
+    "network": "Không thể kết nối tới máy chủ. Hãy kiểm tra mạng và thử lại.",
+    "status": "Yêu cầu thất bại với mã trạng thái {{status}}.",
+    "generic": "Đã có lỗi xảy ra. Vui lòng thử lại."
+  }
+}

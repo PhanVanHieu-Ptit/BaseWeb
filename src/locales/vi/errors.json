@@ -1,0 +1,17 @@
+{
+  "notFound": {
+    "code": "404",
+    "title": "Không tìm thấy trang",
+    "description": "Trang bạn đang tìm không tồn tại hoặc đã được di chuyển."
+  },
+  "route": {
+    "title": "Đã có lỗi xảy ra",
+    "loadFailed": "Không thể tải trang.",
+    "goHome": "Về trang chủ"
+  },
+  "global": {
+    "title": "Đã có lỗi xảy ra",
+    "description": "Đã xảy ra lỗi không mong muốn. Hãy tải lại trang để tiếp tục.",
+    "reload": "Tải lại"
+  }
+}
